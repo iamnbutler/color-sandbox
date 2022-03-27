@@ -1,15 +1,25 @@
 import chroma from "chroma-js";
 
 let zdsBaseColors = [
-  "#EF4444", 
-  "#0EA5E9",
-  "#10B981",
-  "#F97316",
-  "#EAB308",
-  "#22C55E",
-  "#3B82F6",
-  "#A855F7",
-  "#EC4899",
+  // "#64748B", // steel
+  // "#71717A", // gray
+  "#F43F5E", // rose
+  "#EF4444", // red
+  "#F97316", // orange
+  "#F59E0B", // amber
+  "#FACC15", // yellow
+  "#84CC16", // lime
+  "#22C55E", // green
+  "#10B981", // emerald
+  "#2DD4BF", // teal
+  "#22D3EE", // cyan
+  "#0EA5E9", // sky
+  "#3B82F6", // blue
+  "#6366F1", // indigo
+  "#8B5CF6", // violet
+  "#A855F7", // purple
+  "#D946E4", // fuschia
+  "#EC4899", // pink
 ];
 let allColors = [];
 let colorTiles = [];
@@ -26,11 +36,11 @@ function getColorRamp(baseColor, steps = 10) {
   // Create a color ramp using the light and dark colors
   let ramp = chroma
   .scale([lightColor, baseColor, darkColor])
-  .domain([0,0.25,1]) // You can use the domain to set the exact positions of each color.
+  .domain([0,0.5,1]) // You can use the domain to set the exact positions of each color.
   .mode("hsl") // [hsl|hsv|lab|lch|lrgb]
-  .gamma(1.3) // Gamma-correction can be used to "shift" a scale's center
-  .correctLightness(false) // This makes sure the lightness range is spread evenly across a color scale.
-  .padding(0) // trims the edges of the gradient, can take one value [or, two]
+  .gamma(1) // Gamma-correction can be used to "shift" a scale's center
+  // .correctLightness(true) // This makes sure the lightness range is spread evenly across a color scale.
+  .padding([0,0.15]) // trims the edges of the gradient, can take one value [or, two]
   .colors(steps);
 
   return ramp;

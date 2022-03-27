@@ -40,23 +40,17 @@ zdsBaseColors.forEach((baseColor) => {
 });
 
 // Loop through all the color ramps and create a column for each
-allColors.forEach((colorFamily,i = 0)=>{
-  colorFamily.forEach((color,y = 0)=>{
-    colorTiles.push( <div key={y+10} className="colorTile w-32 h-16 flex items-center justify-center" style={{ backgroundColor: [color] }}>{color}</div>)
-  })
-
-  colorColumn.push( <ul key={i++} className="colorColumn flex">{colorTiles}</ul>)
+allColors.flat().forEach((color,i = 0)=>{
+    colorTiles.push( <div key={i} className="colorTile h-24 p-2 flex items-end justify-left font-mono text-neutral-800" style={{ backgroundColor: [color] }}>{color}</div>)
 })
 
 function ColorColumn() {
-    console.log(allColors)
-    console.log(colorColumn)
-    console.log(colorTiles)
+    console.log(allColors.flat())
 
     return (
     <>
       <h2>This is a simple list of items</h2>
-      <div>{colorColumn}</div>
+      <div className="colorGrid grid gap-1 w-1/2 grid-cols-10">{colorTiles}</div>
     </>
   );
 }
